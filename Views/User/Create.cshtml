@@ -1,0 +1,94 @@
+@model User
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="display-4">Create User</h1>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="card-title mb-0">User Information</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <!-- Username Field -->
+                    <div class="form-group mb-3">
+                        <label asp-for="Username" class="form-label fw-bold"></label>
+                        <input asp-for="Username" class="form-control" placeholder="Enter username" />
+                        <span asp-validation-for="Username" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group mb-3">
+                        <label asp-for="Pwd" class="form-label fw-bold"></label>
+                        <input asp-for="Pwd" type="password" class="form-control" placeholder="Enter password" />
+                        <span asp-validation-for="Pwd" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div class="form-group mb-3">
+                        <label asp-for="Confirmpwd" class="form-label fw-bold"></label>
+                        <input asp-for="Confirmpwd" type="password" class="form-control" placeholder="Confirm password" />
+                        <span asp-validation-for="Confirmpwd" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group mb-3">
+                        <label asp-for="Email" class="form-label fw-bold"></label>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="Enter email" />
+                        <span asp-validation-for="Email" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Gender Field -->
+                    <div class="form-group mb-3">
+                        <label asp-for="Gender" class="form-label fw-bold"></label>
+                        <select asp-for="Gender" class="form-select">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span asp-validation-for="Gender" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Marital Status Field -->
+                    <div class="form-group mb-3">
+                        <label asp-for="MaritalStatus" class="form-label fw-bold"></label>
+                        <select asp-for="MaritalStatus" class="form-select">
+                            <option value="">Select Marital Status</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                        <span asp-validation-for="MaritalStatus" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group mb-3">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-user-plus me-2"></i>Create User
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4 text-center">
+    <a asp-action="Index" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left me-2"></i>Back to List
+    </a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
