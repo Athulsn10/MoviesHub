@@ -2,7 +2,387 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Hero Carousel Section -->
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="height: 70vh;">
+            <div class="position-absolute w-100 h-100" style="background: url('https://www.hdwallpapers.in/download/terminator_dark_fate_movie_poster_4k_8k_hd-3840x2160.jpg') center/cover no-repeat; filter: brightness(0.6);"></div>
+            <div class="carousel-caption d-flex flex-column justify-content-center h-100 text-start">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <span class="badge bg-danger mb-2">New Release</span>
+                            <h1 class="display-3 fw-bold text-white mb-3">Terminator Dark Fate</h1>
+                            <p class="lead mb-4">An epic journey through unknown worlds where heroes will be tested like never before.</p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-danger btn-lg px-4">
+                                    <i class="fas fa-play me-2"></i>Watch Trailer
+                                </button>
+                                <button class="btn btn-outline-light btn-lg px-4">More Info</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="carousel-item" style="height: 70vh;">
+            <div class="position-absolute w-100 h-100" style="background: url('https://assetsio.gnwcdn.com/Captain-America_Brave-New-World-cropped-banner.jpg?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp') center/cover no-repeat; filter: brightness(0.6);"></div>
+            <div class="carousel-caption d-flex flex-column justify-content-center h-100 text-start">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <span class="badge bg-primary mb-2">Coming Soon</span>
+                            <h1 class="display-3 fw-bold text-white mb-3">Captain America</h1>
+                            <p class="lead mb-4">Sam Wilson, the new Captain America, finds himself in the middle of an international incident and must discover the motive behind a nefarious global plan.</p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-primary btn-lg px-4">
+                                    <i class="fas fa-bell me-2"></i>Set Reminder
+                                </button>
+                                <button class="btn btn-outline-light btn-lg px-4">More Info</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="carousel-item" style="height: 70vh;">
+            <div class="position-absolute w-100 h-100" style="background: url('https://c4.wallpaperflare.com/wallpaper/375/325/292/interstellar-4k-pc-full-hd-wallpaper-preview.jpg') center/cover no-repeat; filter: brightness(0.6);"></div>
+            <div class="carousel-caption d-flex flex-column justify-content-center h-100 text-start">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <span class="badge bg-success mb-2">Award Winner</span>
+                            <h1 class="display-3 fw-bold text-white mb-3">Interstellar</h1>
+                            <p class="lead mb-4">When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.</p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-success btn-lg px-4">
+                                    <i class="fas fa-ticket-alt me-2"></i>Buy Tickets
+                                </button>
+                                <button class="btn btn-outline-light btn-lg px-4">More Info</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
+
+<!-- Now Showing Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold">Now Showing</h2>
+            <a href="#" class="btn btn-outline-dark">View All</a>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Movie Card 1 -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <div class="position-relative">
+                        <img src="https://preview.redd.it/new-posters-for-captain-america-brave-new-world-v0-1pwskixuande1.jpg?width=640&crop=smart&auto=webp&s=7e75f892c2fe8e8f63b455285b5df9a28496d0bb" class="card-img-top" alt="Movie Poster">
+                        <span class="position-absolute top-0 end-0 badge bg-danger m-2">8.7</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Captain America</h5>
+                        <div class="d-flex mb-2">
+                            <span class="badge bg-secondary me-2">Sci-Fi</span>
+                            <span class="badge bg-secondary">Action</span>
+                        </div>
+                        <p class="card-text small text-muted">2h 35m</p>
+                        <button class="btn btn-sm btn-danger w-100">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movie Card 2 -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <div class="position-relative">
+                        <img src="https://rukminim2.flixcart.com/image/850/1000/jf8khow0/poster/a/u/h/small-hollywood-movie-poster-blade-runner-2049-ridley-scott-original-imaf3qvx88xenydd.jpeg?q=20&crop=false" class="card-img-top" alt="Movie Poster">
+                        <span class="position-absolute top-0 end-0 badge bg-danger m-2">9.1</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Blade Runner 2049</h5>
+                        <div class="d-flex mb-2">
+                            <span class="badge bg-secondary me-2">Sci-Fi</span>
+                            <span class="badge bg-secondary">Drama</span>
+                        </div>
+                        <p class="card-text small text-muted">1h 55m</p>
+                        <button class="btn btn-sm btn-danger w-100">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movie Card 3 -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <div class="position-relative">
+                        <img src="https://i0.wp.com/3.bp.blogspot.com/-4rL53EvgAqI/UTfMEjlJklI/AAAAAAAAADA/SStv62lp_30/s1600/hangover-3-epic-finale-poster.jpg" class="card-img-top" alt="Movie Poster">
+                        <span class="position-absolute top-0 end-0 badge bg-danger m-2">7.9</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Hangover</h5>
+                        <div class="d-flex mb-2">
+                            <span class="badge bg-secondary me-2">Comedy</span>
+                            <span class="badge bg-secondary">Mystery</span>
+                        </div>
+                        <p class="card-text small text-muted">2h 10m</p>
+                        <button class="btn btn-sm btn-danger w-100">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movie Card 4 -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                    <div class="position-relative">
+                        <img src="https://wallpapercave.com/wp/wp10947950.jpg" class="card-img-top" alt="Movie Poster">
+                        <span class="position-absolute top-0 end-0 badge bg-danger m-2">8.5</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">The Batman</h5>
+                        <div class="d-flex mb-2">
+                            <span class="badge bg-secondary me-2">Action</span>
+                            <span class="badge bg-secondary">Fantasy</span>
+                        </div>
+                        <p class="card-text small text-muted">2h 25m</p>
+                        <button class="btn btn-sm btn-danger w-100">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Coming Soon Section with Horizontal Scroll -->
+<section class="py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold">Upcoming Re-Releases</h2>
+            <a href="#" class="btn btn-outline-dark">View All</a>
+        </div>
+        
+        <div class="row flex-nowrap overflow-auto pb-3 g-3">
+            <!-- Coming Soon Movie 1 -->
+            <div class="col-lg-4 col-md-6" style="min-width: 320px;">
+                <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+                    <div class="row g-0">
+                        <div class="col-5">
+                            <img src="https://m.media-amazon.com/images/I/71OHH9HaB5S.jpg" class="img-fluid rounded-start h-100 object-fit-cover" alt="Movie Poster">
+                        </div>
+                        <div class="col-7">
+                            <div class="card-body">
+                                <span class="badge bg-primary mb-2">Mar 15</span>
+                                <h5 class="card-title fw-bold">Tenant</h5>
+                                <div class="d-flex mb-2">
+                                    <span class="badge bg-secondary me-2">Sci-Fi</span>
+                                    <span class="badge bg-secondary">Suspense</span>
+                                </div>
+                                <p class="card-text small mb-3">Armed with only the word "Tenet," and fighting for the survival of the entire world.</p>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-bell me-1"></i>Notify Me
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Coming Soon Movie 2 -->
+            <div class="col-lg-4 col-md-6" style="min-width: 320px;">
+                <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+                    <div class="row g-0">
+                        <div class="col-5">
+                            <img src="https://m.media-amazon.com/images/I/91AwiX6Z6BL.jpg" class="img-fluid rounded-start h-100 object-fit-cover" alt="Movie Poster">
+                        </div>
+                        <div class="col-7">
+                            <div class="card-body">
+                                <span class="badge bg-primary mb-2">Apr 8</span>
+                                <h5 class="card-title fw-bold">Drive</h5>
+                                <div class="d-flex mb-2">
+                                    <span class="badge bg-secondary me-2">Adventure</span>
+                                    <span class="badge bg-secondary">Comedy</span>
+                                </div>
+                                <p class="card-text small mb-3">A mysterious Hollywood action film stuntman gets in trouble with gangsters.</p>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-bell me-1"></i>Notify Me
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Coming Soon Movie 3 -->
+            <div class="col-lg-4 col-md-6" style="min-width: 320px;">
+                <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+                    <div class="row g-0">
+                        <div class="col-5">
+                            <img src="https://go.rappler.com/images/bestmovieposters-prometheus-20121221-01.jpg" class="img-fluid rounded-start h-100 object-fit-cover" alt="Movie Poster">
+                        </div>
+                        <div class="col-7">
+                            <div class="card-body">
+                                <span class="badge bg-primary mb-2">Apr 22</span>
+                                <h5 class="card-title fw-bold">Prometheus</h5>
+                                <div class="d-flex mb-2">
+                                    <span class="badge bg-secondary me-2">Horror</span>
+                                    <span class="badge bg-secondary">Sci-Fi</span>
+                                </div>
+                                <p class="card-text small mb-3">Following clues to the origin of mankind, a team finds a structure on a distant moon.</p>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-bell me-1"></i>Notify Me
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Coming Soon Movie 4 -->
+            <div class="col-lg-4 col-md-6" style="min-width: 320px;">
+                <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+                    <div class="row g-0">
+                        <div class="col-5">
+                            <img src="https://m.media-amazon.com/images/I/71nShdGAJGS.jpg" class="img-fluid rounded-start h-100 object-fit-cover" alt="Movie Poster">
+                        </div>
+                        <div class="col-7">
+                            <div class="card-body">
+                                <span class="badge bg-primary mb-2">May 10</span>
+                                <h5 class="card-title fw-bold">Shutter Island</h5>
+                                <div class="d-flex mb-2">
+                                    <span class="badge bg-secondary me-2">Thriller</span>
+                                    <span class="badge bg-secondary">Mystery</span>
+                                </div>
+                                <p class="card-text small mb-3">Two US marshals are sent to a mental institution on an inhospitable island.</p>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-bell me-1"></i>Notify Me
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-4">Experience Movies Like Never Before</h2>
+            <p class="lead w-75 mx-auto">Join our premium membership for exclusive benefits and an enhanced viewing experience.</p>
+        </div>
+        
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="p-4">
+                    <div class="bg-danger p-3 rounded-circle d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-film fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Premium Screening</h4>
+                    <p>Experience movies in our state-of-the-art theaters with premium sound and visual technology.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="p-4">
+                    <div class="bg-danger p-3 rounded-circle d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-ticket-alt fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Exclusive Access</h4>
+                    <p>Get early access to new releases and special screenings before they're available to the public.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="p-4">
+                    <div class="bg-danger p-3 rounded-circle d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-popcorn fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Concession Deals</h4>
+                    <p>Enjoy discounts on food and beverages with our premium membership packages.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <button class="btn btn-danger btn-lg px-5">Join Premium</button>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter & App Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-4">Never Miss a Release</h2>
+                <p class="mb-4">Subscribe to our newsletter for exclusive updates, movie news, and special offers.</p>
+                
+                <div class="input-group mb-4">
+                    <input type="email" class="form-control form-control-lg" placeholder="Your email address">
+                    <button class="btn btn-danger px-4" type="button">Subscribe</button>
+                </div>
+                
+                <div class="d-flex align-items-center">
+                    <div class="me-4">
+                        <p class="mb-2 fw-bold">Download Our App</p>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-dark btn-sm"><i class="fab fa-apple me-2"></i>App Store</a>
+                            <a href="#" class="btn btn-dark btn-sm"><i class="fab fa-google-play me-2"></i>Google Play</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <img src="https://media.idownloadblog.com/wp-content/uploads/2023/08/Apple-iTunes-Movie-Trailers-App-Banner.jpg" class="img-fluid rounded-3 shadow" alt="Mobile App">
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+     .card-img-top {
+        height: 400px;
+        object-fit: cover;
+    }
+</style>
+<!-- Make sure to include Font Awesome for the icons -->
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+        
+        // Initialize carousel
+        var myCarousel = document.querySelector('#heroCarousel')
+        var carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 5000,
+            pause: 'hover'
+        })
+    </script>
+}
