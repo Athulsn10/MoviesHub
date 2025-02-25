@@ -13,7 +13,6 @@ builder.Services.AddControllersWithViews();
 
 // Get connection string from appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-Console.WriteLine($"Connection string: {connectionString}");
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 25));
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString,serverVersion));
 
