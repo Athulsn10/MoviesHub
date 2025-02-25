@@ -288,3 +288,4 @@ C:\Users\athul\Desktop\panapps\C# class\assignment\MoviesHub\obj\Debug\net6.0\re
 C:\Users\athul\Desktop\panapps\C# class\assignment\MoviesHub\obj\Debug\net6.0\MoviesHub.pdb
 C:\Users\athul\Desktop\panapps\C# class\assignment\MoviesHub\obj\Debug\net6.0\MoviesHub.genruntimeconfig.cache
 C:\Users\athul\Desktop\panapps\C# class\assignment\MoviesHub\obj\Debug\net6.0\ref\MoviesHub.dll
+C:\Users\athul\Desktop\panapps\C# class\assignment\MoviesHub\obj\Debug\net6.0\MoviesHub.sourcelink.json
