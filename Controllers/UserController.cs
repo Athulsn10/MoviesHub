@@ -43,6 +43,12 @@ namespace MoviesHub.Controllers
             return View(user);
         }
 
+        // GET: User/Login
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         // GET: User/Create
         public IActionResult Create()
         {
