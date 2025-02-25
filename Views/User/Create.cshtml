@@ -4,87 +4,92 @@
     ViewData["Title"] = "Create";
 }
 
-<h1 class="display-4">Create User</h1>
-<hr />
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card shadow">
-            <div class="card-header bg-primary text-white">
-                <h4 class="card-title mb-0">User Information</h4>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <!-- Main Card -->
+            <div class="card border-0 shadow-lg rounded-sm overflow-hidden">
+                <!-- Header -->
+                <div class="card-header border-0 p-4 bg-danger">
+                    <h2 class="text-white fw-bold mb-0">Sign Up</h2>
+                </div>
+                
+                <!-- Form Body -->
+                <div class="card-body p-4">
+                    <form asp-action="Create" class="needs-validation">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-sm border-0 shadow-sm"></div>
+
+                        <!-- Two-column layout for username and email -->
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label asp-for="Username" class="form-label">Username</label>
+                                <input asp-for="Username" class="form-control px-3 py-3 border-0 bg-light rounded-sm" placeholder="Enter username" />
+                                <span asp-validation-for="Username" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Email" class="form-label">Email</label>
+                                <input asp-for="Email" type="email" class="form-control px-3 py-3 border-0 bg-light rounded-sm" placeholder="Enter email" />
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <!-- Two-column layout for password fields -->
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label asp-for="Pwd" class="form-label">Password</label>
+                                <input asp-for="Pwd" type="password" class="form-control px-3 py-3 border-0 bg-light rounded-sm" placeholder="Enter password" />
+                                <span asp-validation-for="Pwd" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Confirmpwd" class="form-label">Confirm Password</label>
+                                <input asp-for="Confirmpwd" type="password" class="form-control px-3 py-3 border-0 bg-light rounded-sm" placeholder="Confirm password" />
+                                <span asp-validation-for="Confirmpwd" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <!-- Two-column layout for gender and marital status -->
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label asp-for="Gender" class="form-label">Gender</label>
+                                <select asp-for="Gender" class="form-select border-0 bg-light px-3 py-3  rounded-sm" aria-label="Gender selection">
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <span asp-validation-for="Gender" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="MaritalStatus" class="form-label">Marital Status</label>
+                                <select asp-for="MaritalStatus" class="form-select border-0 bg-light px-3 py-3 rounded-sm" aria-label="Marital status selection">
+                                    <option value="">Select Marital Status</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Divorced">Divorced</option>
+                                    <option value="Widowed">Widowed</option>
+                                </select>
+                                <span asp-validation-for="MaritalStatus" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-lg py-2 text-white fw-bold rounded-sm btn-danger">
+                                <i class="fas fa-user-plus me-2"></i>Register
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="card-body">
-                <form asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
-
-                    <!-- Username Field -->
-                    <div class="form-group mb-3">
-                        <label asp-for="Username" class="form-label fw-bold"></label>
-                        <input asp-for="Username" class="form-control" placeholder="Enter username" />
-                        <span asp-validation-for="Username" class="text-danger small"></span>
-                    </div>
-
-                    <!-- Password Field -->
-                    <div class="form-group mb-3">
-                        <label asp-for="Pwd" class="form-label fw-bold"></label>
-                        <input asp-for="Pwd" type="password" class="form-control" placeholder="Enter password" />
-                        <span asp-validation-for="Pwd" class="text-danger small"></span>
-                    </div>
-
-                    <!-- Confirm Password Field -->
-                    <div class="form-group mb-3">
-                        <label asp-for="Confirmpwd" class="form-label fw-bold"></label>
-                        <input asp-for="Confirmpwd" type="password" class="form-control" placeholder="Confirm password" />
-                        <span asp-validation-for="Confirmpwd" class="text-danger small"></span>
-                    </div>
-
-                    <!-- Email Field -->
-                    <div class="form-group mb-3">
-                        <label asp-for="Email" class="form-label fw-bold"></label>
-                        <input asp-for="Email" type="email" class="form-control" placeholder="Enter email" />
-                        <span asp-validation-for="Email" class="text-danger small"></span>
-                    </div>
-
-                    <!-- Gender Field -->
-                    <div class="form-group mb-3">
-                        <label asp-for="Gender" class="form-label fw-bold"></label>
-                        <select asp-for="Gender" class="form-select">
-                            <option value="">Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <span asp-validation-for="Gender" class="text-danger small"></span>
-                    </div>
-
-                    <!-- Marital Status Field -->
-                    <div class="form-group mb-3">
-                        <label asp-for="MaritalStatus" class="form-label fw-bold"></label>
-                        <select asp-for="MaritalStatus" class="form-select">
-                            <option value="">Select Marital Status</option>
-                            <option value="Single">Single</option>
-                            <option value="Married">Married</option>
-                            <option value="Divorced">Divorced</option>
-                            <option value="Widowed">Widowed</option>
-                        </select>
-                        <span asp-validation-for="MaritalStatus" class="text-danger small"></span>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="form-group mb-3">
-                        <button type="submit" class="btn btn-primary w-100">
-                            <i class="fas fa-user-plus me-2"></i>Create User
-                        </button>
-                    </div>
-                </form>
+            
+            <!-- Back to List Link -->
+            <div class="text-center mt-4">
+                <a asp-action="Index" class="btn btn-link text-decoration-none">
+                    <i class="fas fa-arrow-left me-2"></i>Back to List
+                </a>
             </div>
         </div>
     </div>
-</div>
-
-<div class="mt-4 text-center">
-    <a asp-action="Index" class="btn btn-outline-secondary">
-        <i class="fas fa-arrow-left me-2"></i>Back to List
-    </a>
 </div>
 
 @section Scripts {
