@@ -1,0 +1,75 @@
+# Ignore Visual Studio temporary files, build results, and personal settings
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sdf
+*.dbmdl
+*.log
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.VC.db
+.vscode/
+
+# Ignore build results
+bin/
+obj/
+out/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.ilk
+*.map
+*.ilk
+*.idb
+*.log
+*.tlog
+*.csproj.user
+
+# Ignore NuGet dependencies
+packages/
+!packages/repositories.config
+project.lock.json
+project.assets.json
+nuget.lock.json
+*.nuget.props
+*.nuget.targets
+
+# Ignore ASP.NET MVC temporary files
+App_Data/*.mdf
+App_Data/*.ldf
+App_Data/Temporary ASP.NET Files/
+App_Data/logs/
+App_Data/cache/
+App_Data/uploads/
+
+# Ignore Entity Framework migrations and model snapshots
+Migrations/
+*.mdf
+*.ldf
+
+# Ignore Rider / JetBrains Rider specific files
+.idea/
+*.dotCover
+*.sln.iml
+
+# Ignore Resharper / Code Analysis files
+_ReSharper*/
+*.DotSettings.user
+*.DotSettings
+
+# Ignore deployment settings
+*.Publish.xml
+*.pubxml
+*.pubxml.user
+*.pfx
+*.key
+
+# Ignore IIS Express files
+iisexpress/
+/.vs/
+.config/
