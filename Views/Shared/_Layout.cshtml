@@ -25,10 +25,18 @@
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Movie" asp-action="Index">
+                            <a class="nav-link" asp-controller="Movie" asp-action="Index">
                                 <i class="bi bi-collection-play me-1"></i> Movies
                             </a>
                         </li>
+                        @if (Context.Session.GetString("IsAdmin") == "True")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Movie" asp-action="Create">
+                                    <i class="bi bi-plus-circle me-1"></i> Add Movie
+                                </a>
+                            </li>
+                        }
                     </ul>
 
                     
