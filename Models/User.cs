@@ -5,6 +5,7 @@ public class User
     {  
         [Key]  
         public int UserId { get; set; }  
+        public bool IsAdmin { get; set; }
   
         [Required(ErrorMessage ="Please Enter Username..")]  
         [Display(Name = "UserName")]  
