@@ -62,6 +62,7 @@ namespace MoviesHub.Controllers
             {
                 HttpContext.Session.SetString("Username", user.Username);
                 HttpContext.Session.SetString("UserId", user.UserId.ToString());
+                HttpContext.Session.SetString("IsAdmin", existingUser.IsAdmin.ToString());
 
                 return RedirectToAction("Index", "Home");
             }
@@ -96,7 +97,7 @@ namespace MoviesHub.Controllers
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             return View(user);
         }

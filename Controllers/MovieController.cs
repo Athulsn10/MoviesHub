@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MoviesHub.Models;
+using MoviesHub.Attributes;
+using MoviesHub.Helpers;
 
 namespace MoviesHub.Controllers
 {
     public class MovieController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public MovieController(ApplicationDbContext context)
+        public MovieController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Movie
@@ -44,6 +48,7 @@ namespace MoviesHub.Controllers
         }
 
         // GET: Movie/Create
+        [AdminOnly]
         public IActionResult Create()
         {
             return View();
@@ -53,15 +58,37 @@ namespace MoviesHub.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [AdminOnly]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price,ImageFile")] Movie movie)
         {
+            if (movie.ImageFile != null)
+            {
+                try
+                {
+                    movie.ImageUrl = await FileHelper.UploadFile(movie.ImageFile, _webHostEnvironment);
+                    ModelState.Remove("ImageUrl");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("ImageFile", $"Error uploading image: {ex.Message}");
+                }
+            }
+
             if (ModelState.IsValid)
             {
-                _context.Add(movie);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(movie);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", $"Error saving movie: {ex.Message}");
+                }
             }
+
             return View(movie);
         }
 
