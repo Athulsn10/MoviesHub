@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 namespace MoviesHub.Models;
 
 public class Movie
@@ -11,6 +13,13 @@ public class Movie
     public DateTime ReleaseDate { get; set; }
     public string? Genre { get; set; }
 
-
+    // [Required(ErrorMessage ="Please Upload An Image")]
+    [Display(Name = "Image")]
+    public string? ImageUrl { get; set; }
+    
+    [NotMapped]
+    [Display(Name = "Upload Image")]
+    [Required(ErrorMessage = "Please select an image file")]
+    public IFormFile ImageFile { get; set; }
     public decimal Price { get; set; }
 }
