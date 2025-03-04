@@ -1,42 +1,73 @@
 @model Movie
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Movie Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Movie</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ReleaseDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 rounded-3 overflow-hidden">
+                <!-- Movie cover header with image - fixed stretching issue -->
+                <div class="card-img-top position-relative bg-dark d-flex align-items-center justify-content-center" style="height: 250px;">
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <div class="position-relative w-100 h-100">
+                            <img src="~/Uploads/@Model.ImageUrl" class="position-absolute top-50 start-50 translate-middle" 
+                                 style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="@Model.Title" />
+                            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);"></div>
+                        </div>
+                    }
+                    <div class="position-absolute bottom-0 start-0 w-100 p-3 text-white">
+                        <h2 class="display-6 mb-0 fw-bold">@Model.Title</h2>
+                    </div>
+                </div>
+                
+                <div class="card-body p-4">
+                    <!-- Movie metadata badges -->
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="badge bg-primary rounded-pill">@Model.Genre</span>
+                        <span class="badge bg-secondary rounded-pill">Released: @Model.ReleaseDate.ToString("MMM dd, yyyy")</span>
+                        <span class="badge bg-info text-dark rounded-pill">$@Model.Price.ToString("0.00")</span>
+                    </div>
+                    
+                    <!-- Movie details -->
+                    <div class="card bg-light border-0">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary mb-3">
+                                <i class="bi bi-info-circle-fill me-2"></i>Movie Details
+                            </h5>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-4 fw-bold mb-2">Title:</div>
+                                <div class="col-md-9 col-sm-8 mb-2">@Model.Title</div>
+                                
+                                <div class="col-md-3 col-sm-4 fw-bold mb-2">Release Date:</div>
+                                <div class="col-md-9 col-sm-8 mb-2">@Model.ReleaseDate.ToString("MMMM dd, yyyy")</div>
+                                
+                                <div class="col-md-3 col-sm-4 fw-bold mb-2">Genre:</div>
+                                <div class="col-md-9 col-sm-8 mb-2">@Model.Genre</div>
+                                
+                                <div class="col-md-3 col-sm-4 fw-bold mb-2">Price:</div>
+                                <div class="col-md-9 col-sm-8 mb-2">$@Model.Price.ToString("0.00")</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-footer bg-white p-3 d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i>Back to List
+                    </a>
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">
+                            <i class="bi bi-pencil-square me-1"></i>Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-outline-danger ms-2">
+                            <i class="bi bi-trash me-1"></i>Delete
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
