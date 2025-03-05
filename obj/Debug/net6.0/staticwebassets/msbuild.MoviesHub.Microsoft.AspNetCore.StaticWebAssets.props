@@ -1024,5 +1024,21 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\cf24d7de-aae9-4ef4-aae0-e7058d7d5b9b_captainAmerica.webp))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\d6e46dab-a898-4c65-ba32-8ae14986df09_small-hollywood-movie-poster-blade-runner-2049-ridley-scott-original-imaf3qvx88xenydd.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>MoviesHub</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/MoviesHub</BasePath>
+      <RelativePath>Uploads/d6e46dab-a898-4c65-ba32-8ae14986df09_small-hollywood-movie-poster-blade-runner-2049-ridley-scott-original-imaf3qvx88xenydd.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\d6e46dab-a898-4c65-ba32-8ae14986df09_small-hollywood-movie-poster-blade-runner-2049-ridley-scott-original-imaf3qvx88xenydd.webp))</OriginalItemSpec>
+    </StaticWebAsset>
   </ItemGroup>
 </Project>

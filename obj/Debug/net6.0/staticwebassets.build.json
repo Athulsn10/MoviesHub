@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "AnAScf2gb7QLMhQ2l1xOaJLq8C4y2HUnGe7f7WVrwVk=",
+  "Hash": "jV6UU61NaWA3T20ym1s0rP+1t2cMV7V51ui0YvZjiAE=",
   "Source": "MoviesHub",
   "BasePath": "_content/MoviesHub",
   "Mode": "Default",
@@ -1250,6 +1250,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\cf24d7de-aae9-4ef4-aae0-e7058d7d5b9b_captainAmerica.webp"
+    },
+    {
+      "Identity": "C:\\Users\\athul\\Desktop\\panapps\\C# class\\assignment\\MoviesHub\\wwwroot\\Uploads\\d6e46dab-a898-4c65-ba32-8ae14986df09_small-hollywood-movie-poster-blade-runner-2049-ridley-scott-original-imaf3qvx88xenydd.webp",
+      "SourceId": "MoviesHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\athul\\Desktop\\panapps\\C# class\\assignment\\MoviesHub\\wwwroot\\",
+      "BasePath": "_content/MoviesHub",
+      "RelativePath": "Uploads/d6e46dab-a898-4c65-ba32-8ae14986df09_small-hollywood-movie-poster-blade-runner-2049-ridley-scott-original-imaf3qvx88xenydd.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\d6e46dab-a898-4c65-ba32-8ae14986df09_small-hollywood-movie-poster-blade-runner-2049-ridley-scott-original-imaf3qvx88xenydd.webp"
     }
   ]
 }
