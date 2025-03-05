@@ -5,6 +5,33 @@
 }
 
 <div class="container">
+    <!-- Rating Modal -->
+    <div class="modal fade" id="ratingModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Rate Movie</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <h6 id="movieTitle" class="mb-4"></h6>
+                    <div class="star-rating">
+                        <i class="bi bi-star star" data-rating="1"></i>
+                        <i class="bi bi-star star" data-rating="2"></i>
+                        <i class="bi bi-star star" data-rating="3"></i>
+                        <i class="bi bi-star star" data-rating="4"></i>
+                        <i class="bi bi-star star" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="selectedRating" value="0">
+                    <input type="hidden" id="movieId" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submitRating">Submit Rating</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <h1 class="display-4 mb-4">Movies Collection</h1>
     
     @if (Context.Session.GetString("IsAdmin") == "True")
@@ -41,6 +68,7 @@
                                 </span>
                             </div>
                             <p class="fs-5 text-success">$@item.Price.ToString("F2")</p>
+                            <p class="fs-5 text-info">Rating: @item.Rating</p>
                         </div>
                     </div>
                     <div class="card-footer bg-transparent border-top-0">
@@ -48,6 +76,13 @@
                             <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">
                                 <i class="bi bi-info-circle"></i> Details
                             </a>
+                            @if (Context.Session.GetString("IsAdmin") == "False")
+                            {
+                                <a href="#" class="btn btn-sm btn-outline-primary" 
+                                    onclick="openRatingModal(@item.Id, '@item.Title', @item.Rating)">
+                                        <i class="bi bi-star-fill"></i> Rate Movie
+                                </a>
+                            }
                             
                             @if (Context.Session.GetString("IsAdmin") == "True")
                             {
@@ -78,3 +113,99 @@
         }
     </div>
 }
+
+<style>
+    .star-rating {
+        font-size: 2rem;
+        cursor: pointer;
+    }
+    .star {
+        color: #ccc;
+        transition: color 0.2s;
+        padding: 0 5px;
+    }
+    .star.active {
+        color: #ffd700;
+    }
+    .star:hover {
+        color: #ffd700;
+    }
+</style>
+<script>
+    function openRatingModal(movieId, movieTitle, currRating) {
+        document.getElementById('movieId').value = movieId;
+        document.getElementById('movieTitle').textContent = movieTitle;
+        document.getElementById('selectedRating').value = currRating ? currRating : 0;
+        
+        // Reset stars
+        document.querySelectorAll('.star').forEach(star => {
+            star.classList.remove('active');
+            star.classList.remove('bi-star-fill');
+            star.classList.add('bi-star');
+        });
+        
+        new bootstrap.Modal(document.getElementById('ratingModal')).show();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const stars = document.querySelectorAll('.star');
+        
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() {
+                const rating = this.dataset.rating;
+                stars.forEach(s => {
+                    if (s.dataset.rating <= rating) {
+                        s.classList.remove('bi-star');
+                        s.classList.add('bi-star-fill');
+                    }
+                });
+            });
+
+            star.addEventListener('mouseout', function() {
+                const selectedRating = document.getElementById('selectedRating').value;
+                stars.forEach(s => {
+                    if (s.dataset.rating > selectedRating) {
+                        s.classList.remove('bi-star-fill');
+                        s.classList.add('bi-star');
+                    }
+                });
+            });
+
+            star.addEventListener('click', function() {
+                const rating = this.dataset.rating;
+                document.getElementById('selectedRating').value = rating;
+                stars.forEach(s => {
+                    if (s.dataset.rating <= rating) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        document.getElementById('submitRating').addEventListener('click', async function() {
+            const movieId = document.getElementById('movieId').value;
+            const rating = document.getElementById('selectedRating').value;
+            
+            try {
+                const response = await fetch('/Movie/Rate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ movieId, rating })
+                });
+
+                if (response.ok) {
+                    location.reload();
+                } else {
+                    alert('Error submitting rating');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error submitting rating');
+            }
+        });
+    });
+</script>
