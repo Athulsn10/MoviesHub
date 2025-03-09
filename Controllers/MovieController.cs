@@ -143,6 +143,32 @@ namespace MoviesHub.Controllers
             return View(movie);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Rate([FromBody] RatingRequest request)
+        {
+            if (request.Rating < 1 || request.Rating > 5)
+            {
+                return BadRequest(new { message = "Rating must be between 1 and 5" });
+            }
+
+            try
+            {
+                var movie = await _context.Movies.FindAsync(request.MovieId);
+                if (movie == null)
+                {
+                    return NotFound(new { message = "Movie not found" });
+                }
+
+                movie.Rating = request.Rating;
+                await _context.SaveChangesAsync();
+                
+                return Ok(new { message = "Rating updated successfully" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error updating rating" });
+            }
+        }
         // GET: Movie/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
