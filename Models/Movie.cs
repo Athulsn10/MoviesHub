@@ -12,7 +12,7 @@ public class Movie
     [DataType(DataType.Date)]
     public DateTime ReleaseDate { get; set; }
     public string? Genre { get; set; }
-    public string? Rating { get; set;}
+    public int? Rating { get; set;}
 
     // [Required(ErrorMessage ="Please Upload An Image")]
     [Display(Name = "Image")]
@@ -23,4 +23,10 @@ public class Movie
     [Required(ErrorMessage = "Please select an image file")]
     public IFormFile ImageFile { get; set; }
     public decimal Price { get; set; }
+}
+
+public class RatingRequest
+{
+    public int MovieId { get; set; }
+    public int Rating { get; set; }
 }
