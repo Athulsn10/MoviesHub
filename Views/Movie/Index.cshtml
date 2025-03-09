@@ -78,10 +78,10 @@
                             </a>
                             @if (Context.Session.GetString("IsAdmin") == "False")
                             {
-                                <a href="#" class="btn btn-sm btn-outline-primary" 
-                                    onclick="openRatingModal(@item.Id, '@item.Title', @item.Rating)">
-                                        <i class="bi bi-star-fill"></i> Rate Movie
-                                </a>
+                              <a href="#" class="btn btn-sm btn-outline-primary" 
+                                onclick="openRatingModal(@item.Id, '@item.Title', @(item.Rating ?? 0))">
+                                <i class="bi bi-star-fill"></i> Rate Movie
+                              </a>
                             }
                             
                             @if (Context.Session.GetString("IsAdmin") == "True")
@@ -132,16 +132,24 @@
     }
 </style>
 <script>
-    function openRatingModal(movieId, movieTitle, currRating) {
+   function openRatingModal(movieId, movieTitle, currentRating) {
         document.getElementById('movieId').value = movieId;
         document.getElementById('movieTitle').textContent = movieTitle;
-        document.getElementById('selectedRating').value = currRating ? currRating : 0;
+        document.getElementById('selectedRating').value = currentRating;
         
-        // Reset stars
-        document.querySelectorAll('.star').forEach(star => {
-            star.classList.remove('active');
-            star.classList.remove('bi-star-fill');
-            star.classList.add('bi-star');
+        // Set stars based on current rating
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+            const rating = parseInt(star.dataset.rating);
+            if (rating <= currentRating) {
+                star.classList.remove('bi-star');
+                star.classList.add('bi-star-fill');
+                star.classList.add('active');
+            } else {
+                star.classList.remove('bi-star-fill');
+                star.classList.add('bi-star');
+                star.classList.remove('active');
+            }
         });
         
         new bootstrap.Modal(document.getElementById('ratingModal')).show();
@@ -161,12 +169,18 @@
                 });
             });
 
-            star.addEventListener('mouseout', function() {
-                const selectedRating = document.getElementById('selectedRating').value;
+           star.addEventListener('mouseout', function() {
+                const selectedRating = parseInt(document.getElementById('selectedRating').value);
                 stars.forEach(s => {
-                    if (s.dataset.rating > selectedRating) {
+                    const rating = parseInt(s.dataset.rating);
+                    if (rating <= selectedRating) {
+                        s.classList.remove('bi-star');
+                        s.classList.add('bi-star-fill');
+                        s.classList.add('active');
+                    } else {
                         s.classList.remove('bi-star-fill');
                         s.classList.add('bi-star');
+                        s.classList.remove('active');
                     }
                 });
             });
